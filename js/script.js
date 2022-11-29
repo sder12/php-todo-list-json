@@ -15,8 +15,19 @@ createApp({
     },
     methods: {
         createNewTask() {
-            console.log(this.newTask);
-            this.newTask = "";
-        }
+            const data = {
+                text: this.newTask,
+                done: false
+            };
+            axios.post("server.php", data, {
+                headers: { "Content-Type": "multipart/form-data" },
+            }).then((resp) => {
+                console.log(resp);
+                this.toDo = resp.data;
+                this.toDo.push(data);
+                this.newTask = "";
+            });
+        },
     }
+
 }).mount('#app');
