@@ -4,12 +4,12 @@ createApp({
     data() {
         return {
             title: 'To Do List',
-            arrayDebug: [],
+            toDo: [],
         }
     },
     created() {
         axios.get('server.php').then((resp) =>
-            this.arrayDebug = resp.data
+            this.toDo = resp.data
         );
     }
 }).mount('#app');

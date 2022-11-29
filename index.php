@@ -27,7 +27,7 @@
             <!-- LIST -->
             <section class="row my-5 justify-content-center">
                 <ul class="list-group col-7">
-                    <li class="list-group-item" v-for="item in arrayDebug">{{item}}</li>
+                    <li class="list-group-item" v-for="item in toDo">{{item.text}}</li>
                 </ul>
             </section>
 
