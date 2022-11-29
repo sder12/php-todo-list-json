@@ -21,9 +21,29 @@
     <div class="ms_container">
         <!-- Vue Container -->
         <main id="app" class="container mt-5">
+            <!-- TITLE -->
             <h1 class="text-center"> {{title}} </h1>
 
+            <!-- LIST -->
+            <section class="row my-5 justify-content-center">
+                <ul class="list-group col-7">
+                    <li class="list-group-item ">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+            </section>
 
+            <!-- INPUT -->
+            <section class="ms_input">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Add new task" aria-label="Add new to do">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">Add</button>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
