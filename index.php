@@ -37,7 +37,7 @@
             <!-- INPUT -->
             <section class=" ms_input">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Add new task" aria-label="Add new to do" v-model="newTask">
+                    <input type="text" class="form-control" placeholder="Add new task" aria-label="Add new to do" v-model="newTask" @keyup.enter="createNewTask">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="button" @click="createNewTask">Add</button>
                     </div>
