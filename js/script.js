@@ -5,7 +5,8 @@ createApp({
         return {
             title: 'To Do List',
             toDo: [],
-            newTask: '',
+            newTask: ""
+
         }
     },
     created() {
@@ -16,18 +17,22 @@ createApp({
     methods: {
         createNewTask() {
             const data = {
-                text: this.newTask,
-                done: false
+                newTask: this.newTask,
             };
-            axios.post("server.php", data, {
-                headers: { "Content-Type": "multipart/form-data" },
-            }).then((resp) => {
-                console.log(resp);
-                this.toDo = resp.data;
-                this.toDo.push(data);
-                this.newTask = "";
-            });
+            axios
+                .post("server.php", data, {
+                    headers: { "Content-Type": "multipart/form-data" },
+                })
+                .then((resp) => {
+                    this.toDo = resp.data;
+                    this.newTask = "";
+                });
         },
-    }
-
+        toggleDone(index) {
+            this.toDo[index].done = !this.toDo[index].done;
+        },
+        cancelItem(index) {
+            this.toDo.splice(index, 1)
+        },
+    },
 }).mount('#app');

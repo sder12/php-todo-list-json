@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP ToDo List JSON</title>
 
-    <!-- BOOSTRAP -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- MY STYLE -->
     <link rel="stylesheet" href="css/style.css">
-    <!-- VUE -->
+    <!-- Axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Vue -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <!-- API -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
 </head>
 
 <body>
@@ -27,12 +27,15 @@
             <!-- LIST -->
             <section class="row my-5 justify-content-center">
                 <ul class="list-group col-7">
-                    <li class="list-group-item" v-for="item in toDo">{{item.text}}</li>
+                    <li class="list-group-item d-flex justify-content-between" v-for="(item, index) in toDo" :key="index">
+                        <h5 :class="item.done ? 'ms_done' : ''" class="text-left" @click="toggleDone(index)"> {{item.text}} </h5>
+                        <span class="text-right" @click="cancelItem(index)"> &cross; </span>
+                    </li>
                 </ul>
             </section>
 
             <!-- INPUT -->
-            <section class="ms_input">
+            <section class=" ms_input">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Add new task" aria-label="Add new to do" v-model="newTask">
                     <div class="input-group-append">
@@ -40,6 +43,7 @@
                     </div>
                 </div>
             </section>
+
         </main>
     </div>
 
